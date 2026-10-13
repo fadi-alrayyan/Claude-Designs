@@ -20,14 +20,14 @@ export function Dialog({ open, onClose, title, description, children }: DialogPr
     const { overflow } = document.body.style;
     document.body.style.overflow = 'hidden';
     const focusFirst = window.setTimeout(() => {
-      panelRef.current?.querySelector<HTMLElement>('input, button:not([data-close])')?.focus();
+      panelRef.current?.querySelector<HTMLElement>('input:not([tabindex="-1"]), button:not([data-close])')?.focus();
     }, 50);
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
       if (event.key !== 'Tab' || !panelRef.current) return;
       const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), input, select, textarea',
+        'a[href], button:not([disabled]), input:not([tabindex="-1"]), select, textarea',
       );
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
