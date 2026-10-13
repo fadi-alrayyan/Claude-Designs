@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-porcelain font-sans text-ink antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    font-feature-settings: 'ss01', 'tnum' 0;
+  }
+  ::selection {
+    @apply bg-signal/30 text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #00824a;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Expanded Archivo for display type: the engineered, wide voice of the brand. */
+  .display {
+    font-stretch: 118%;
+    font-weight: 560;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+  .wide {
+    font-stretch: 112%;
+  }
+  .h1 {
+    @apply display;
+    text-wrap: balance;
+    font-size: clamp(2.75rem, 6.6vw, 5.4rem);
+  }
+  .h2 {
+    @apply display;
+    text-wrap: balance;
+    font-size: clamp(2rem, 4.2vw, 3.35rem);
+    line-height: 1.02;
+  }
+  .h3 {
+    font-stretch: 112%;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+  .lede {
+    @apply text-slate;
+    font-size: clamp(1.06rem, 1.4vw, 1.2rem);
+    line-height: 1.55;
+    max-width: 36rem;
+  }
+  .shell {
+    @apply mx-auto w-full max-w-site px-4 sm:px-8;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Buttons. Primary is the answer-call green pill; text stays ink for contrast. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition-[background-color,box-shadow,color,border-color] duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-signal text-ink hover:bg-[#12d873];
+    box-shadow: 0 0 0 1px rgba(0, 130, 74, 0.25) inset, 0 10px 30px -10px rgba(0, 200, 100, 0.65);
+  }
+  .btn-secondary {
+    @apply btn border border-ink/15 bg-paper text-ink hover:border-ink/40;
+  }
+  .btn-ink {
+    @apply btn bg-ink text-paper hover:bg-ink-3;
+  }
+  .btn-ghost-dark {
+    @apply btn border border-white/20 text-paper hover:border-white/50;
+  }
+  .link {
+    @apply font-semibold text-signal-deep underline decoration-signal-deep/30 underline-offset-4 transition-colors hover:decoration-signal-deep;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-paper px-4 py-3 text-[15px] text-ink outline-none transition placeholder:text-slate/60 focus:border-signal-deep focus:ring-4 focus:ring-signal/15;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate;
+  }
+
+  /* Dark instrument surfaces (call console, portal canvas). */
+  .instrument {
+    @apply relative overflow-hidden rounded-[28px] bg-ink text-paper;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset, 0 40px 80px -30px rgba(16, 32, 26, 0.55);
+  }
+  .panel {
+    @apply rounded-[20px] border border-line bg-paper;
+  }
+}
